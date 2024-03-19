@@ -12,13 +12,6 @@ const Checkbox = ({ checkboxOptions }) => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(
-  //     "Selected items:",
-  //     selectedItems.map((selectedIndex) => options[selectedIndex])
-  //   );
-  // }, [selectedItems]);
-
   return (
     <div className="checkbox">
       <span className="label">{"Select your preferred units"}</span>
