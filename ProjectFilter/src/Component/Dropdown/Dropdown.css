@@ -22,7 +22,7 @@
     padding: 10px;
     border: 1px solid #3b3b3b;
     cursor: pointer;
-    background-color: #3b3b3b;
+    background-color: white;
   }
   
   .arrow {
@@ -44,7 +44,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #3b3b3b;
+    background-color: white;
     border: 1px solid #ccc;
     border-top: none;
   }
@@ -54,7 +54,7 @@
     margin: 0px;
     padding: 4px;
     border: 1px solid #ccc;
-    background-color: #3b3b3b;
+    background-color: white;
   }
   
   .list {
@@ -71,6 +71,6 @@
   }
   
   .item:hover {
-    background-color: #3b3b3b;
+    background-color: #8f8686;
   }
   

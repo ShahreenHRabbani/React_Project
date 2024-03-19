@@ -89,27 +89,29 @@ function App() {
     setValue ({...value , [e.target.name]:e.target.value})
   }
   
-  console.log (`values`)
+  // console.log (`values`)
   return (
-    
-    <div className='app'>
-          <form onSubmit={handleSubmit}>
-            <h1>Form</h1>
-            {input.map((input) =>(
-              <FormInput 
-              key = {input.id}
-              {...input}
-              value = {value[input.name]}
-              onChange = {handleOnChange} />
-
-            ))}  
-           <Dropdown className="dropdown" options={options} onOptionChange={handleOptionChange} />
-           <Checkbox className="checkbox" options={checkboxOptions} />
-           <button>Submit</button>
-          </form>
-     </div>
-    
-  )
+    <div className="app">
+      <form onSubmit={handleSubmit}>
+        <h1>Form</h1>
+        {input.map((input) => (
+          <FormInput
+            key={input.id}
+            {...input}
+            value={value[input.name]}
+            onChange={handleOnChange}
+          />
+        ))}
+        <Dropdown
+          className="dropdown"
+          dropdownOptions={options}
+          onOptionChange={handleOptionChange}
+        />
+        <Checkbox className="checkbox" checkboxOptions={checkboxOptions} />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
 }
 
 export default App

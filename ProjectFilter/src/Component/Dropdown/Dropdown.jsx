@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Dropdown.css"; // Ensure to create this CSS file
 
-const SearchableDropdown = ({  options }) => {
+const SearchableDropdown = ({ dropdownOptions }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [filter, setFiltere] = useState(options);
+  const [filter, setFiltere] = useState(dropdownOptions);
+  const [selectedItem, setselectedItem] = useState(null);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -20,14 +21,14 @@ const SearchableDropdown = ({  options }) => {
 
   useEffect(() => {
     setFiltere(
-      options.filter((option) =>
-        option.toLowerCase().includes(search.toLowerCase())
+      dropdownOptions.filter((item) =>
+        item.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, options]);
+  }, [search, dropdownOptions]);
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
+  const handleOptionClick = (item) => {
+    setselectedItem(item);
     setIsOpen(false);
     setSearch("");
   };
@@ -35,26 +36,26 @@ const SearchableDropdown = ({  options }) => {
   return (
     <div className="dropdown" ref={dropdownRef}>
       <span className="label">{"Select your area"}</span>
-      <div className="header" onClick={() => setIsOpen(!isOpen)}>  
-        <span className={`arrow ${isOpen ? "open" : ""}`}></span>
-      </div>
+
+      {/* <span className={`arrow ${isOpen ? "open" : ""}`}></span> */}
+      <input
+        type="text"
+        placeholder="Search..."
+        value={selectedItem || search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="search"
+        onClick={() => setIsOpen(!isOpen)}/>
+
       {isOpen && (
         <div className="menu">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="search"
-          />
           <ul className="list">
-            {filter.map((option, index) => (
+            {filter.map((item, index) => (
               <li
                 key={index}
                 className="item"
-                onClick={() => handleOptionClick(option)}
+                onClick={() => handleOptionClick(item)}
               >
-                {option}
+                {item}
               </li>
             ))}
           </ul>
