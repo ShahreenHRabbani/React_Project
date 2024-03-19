@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Dropdown.css"; // Ensure to create this CSS file
 
-const SearchableDropdown = ({ dropdownOptions }) => {
+const SearchableDropdown = ({ dropdownOptions, onChange, name }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [filter, setFiltere] = useState(dropdownOptions);
@@ -31,6 +31,7 @@ const SearchableDropdown = ({ dropdownOptions }) => {
     setselectedItem(item);
     setIsOpen(false);
     setSearch("");
+    onChange({ target: { value:item, name:name } });
   };
 
   return (
@@ -44,7 +45,8 @@ const SearchableDropdown = ({ dropdownOptions }) => {
         value={selectedItem || search}
         onChange={(e) => setSearch(e.target.value)}
         className="search"
-        onClick={() => setIsOpen(!isOpen)}/>
+        onClick={() => setIsOpen(!isOpen)}
+      />
 
       {isOpen && (
         <div className="menu">

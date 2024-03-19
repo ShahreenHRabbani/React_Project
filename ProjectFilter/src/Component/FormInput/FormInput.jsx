@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Dropdown from "../Dropdown/Dropdown"
 import "./FormInput.css"
 
 
 const FormInput = (props)=>
 {   const [focused, setFocused] = useState(false);
-    const {label , errorMsg , onChange , ...inputprops} = props;
+    const {label ,  onChange , ...inputprops} = props;
 
 
 
